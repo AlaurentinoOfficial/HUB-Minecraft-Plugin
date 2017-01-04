@@ -1,0 +1,5 @@
+name: HUB
+version: 2.0-SNAPSHOT
+author: Alaurentino
+
+main: com.alaurentino.HUB
