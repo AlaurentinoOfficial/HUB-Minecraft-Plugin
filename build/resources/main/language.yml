@@ -2,23 +2,25 @@
 
 pt_BR:
     joinPlayer:
-        - '&6Seja bem-vindo &3<PlayerName> &6ao <ServerName> &6!'
+        - '&6Seja bem-vindo &3<Player> &6ao <Server> &6!'
         - '&6Sao &c%time &6horas neste momento'
         - '&6Veja as regras do servidor com &c/regras - /rules'
         - '&6Veja todos os comandos utilidando &c/help'
         - '&3Configure esta mensagem em &b -- &3Config.yml&b --'
     rules:
         - '&b---------------------------------------'
-        - '&b>            &6Regras do %server'
+        - '&b>            &6Regras do <Server>'
         - '&b> &3Edite aqui as regras do seu servidor'
         - '&b> &3Configure no Config.yml'
         - '&b> &3Developer By: <Developer>'
         - '&bForum> &3https://forum.gamemods.com.br/members/anderson-laurentino.72433/'
         - '&b---------------------------------------'
-    join: '&9Entrou> &7<PlayerName>'
-    leave: '&9Saiu> &7<PlayerName>'
+    join: '&9Entrou> &7<Player>'
+    leave: '&9Saiu> &7<Player>'
+    commandForPlayers: "&9Server> &7Este comando é para players!"
+    playerNotFound: '&9Server> Player não encontrado!'
     playerDeath: "&9Server> &7Você morreu!"
-    playerDeathGlobal: "&9Server> &7<PlayerName> morreu!"
+    playerDeathGlobal: "&9Server> &7<Player> morreu!"
     setspawn: '&9Server> &7Voce criou um spawn/lobby/hub!'
     setspawnNotPermission: '&4Permissao> Voce nao tem permiss��o para definir um spawn/hub/lobby'
     spawn: '&9Server> &7Voce agora esta no spawn!!!'
@@ -66,6 +68,8 @@ en_US:
         - '&b---------------------------------------'
     join: '&9Entrou> &7%player'
     leave: '&9Saiu> &7%player'
+    commandForPlayers: "&9Server> &7This command is for players!"
+    playerNotFound: '&9Server> &7Player not found!'
     playerDeath: "&9Server> &7<PlayerName> died!"
     setspawn: '&9Server> &7You created a spawn / lobby / hub !'
     setspawnNotPermission: '&4Permission> You are not allowed to set a spawn / hub / lobby'

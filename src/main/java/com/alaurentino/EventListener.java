@@ -30,8 +30,8 @@ public class EventListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        //if(!FileManager.getLanguage().contains(e.getPlayer().getDisplayName()))
-        FileManager.getLanguage().set(e.getPlayer().getDisplayName(), FileManager.getConfig().get("default_language"));
+        if(!FileManager.getLanguage().contains(e.getPlayer().getDisplayName()))
+            FileManager.setLanguage(e.getPlayer().getDisplayName(), FileManager.getConfig().get("default_language"));
 
         e.getPlayer().teleport(FileManager.getSpawn(e.getPlayer()));
 
@@ -39,8 +39,8 @@ public class EventListener implements Listener {
                            FileManager.getConfig().getInt("fade_in"),
                            FileManager.getConfig().getInt("fade_out"),
                            FileManager.getConfig().getInt("time"),
-                           FileManager.getConfig().getString("title"),
-                           FileManager.getConfig().getString("sub_title"));
+                           MessageManager.filterMsg(e.getPlayer(), FileManager.getConfig().getString("title")),
+                           MessageManager.filterMsg(e.getPlayer(), FileManager.getConfig().getString("sub_title")));
 
         for (String line : MessageManager.getMessageList(e.getPlayer(), "joinPlayer"))
             e.getPlayer().sendMessage(MessageManager.filterMsg(e.getPlayer(), line));
@@ -120,7 +120,6 @@ public class EventListener implements Listener {
     @EventHandler
     public void noFallDamage(EntityDamageEvent e) {
         if(e.getEntity() instanceof Player) {
-
             // Protection by pvp
             if(e.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK)
                 for(String worldName : FileManager.getConfig().getStringList("protection.pvp"))

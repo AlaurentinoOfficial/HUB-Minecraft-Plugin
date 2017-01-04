@@ -1,6 +1,7 @@
 package com.alaurentino.Managers;
 
 import com.alaurentino.HUB;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -10,11 +11,11 @@ import org.bukkit.entity.Player;
 public class MessageFilter {
 
     public static String serverTagsFilter(String message) {
-        return message.replaceAll("<ServerName>", HUB.getInstace.getServer().getName())
-                      .replaceAll("<ServerVersion>", HUB.getInstace.getServer().getVersion().substring(0, 6))
-                      .replaceAll("<ServerMotd>", HUB.getInstace.getServer().getMotd())
-                      .replaceAll("<ServerMaxPlayers>", String.valueOf(HUB.getInstace.getServer().getMaxPlayers()))
-                      .replaceAll("<ServerOnlinePlayers>", String.valueOf(HUB.getInstace.getServer().getOnlinePlayers().size()))
+        return message.replaceAll("<Server>", HUB.getInstace.getServer().getName())
+                      .replaceAll("<Version>", "1.11")
+                      .replaceAll("<Motd>", HUB.getInstace.getServer().getMotd())
+                      .replaceAll("<MaxPlayers>", String.valueOf(HUB.getInstace.getServer().getMaxPlayers()))
+                      .replaceAll("<OnlinePlayers>", String.valueOf(HUB.getInstace.getServer().getOnlinePlayers().size()))
                       .replaceAll("<MaxMemory>", String.valueOf(Runtime.getRuntime().maxMemory()/1024)+"GB")
                       .replaceAll("<AllocatedMemory>", String.valueOf(Runtime.getRuntime().totalMemory()/1024)+"GB")
                       .replaceAll("<FreeMemory>", String.valueOf(Runtime.getRuntime().freeMemory()/1024)+"GB")
@@ -24,7 +25,7 @@ public class MessageFilter {
     }
 
     public static String playerTagsFilter(Player player, String message) {
-        return message.replaceAll("<PlayerName>", player.getDisplayName())
+        return message.replaceAll("<Player>", player.getDisplayName())
                       .replaceAll("<PlayerUUID>", String.valueOf(player.getUniqueId()))
                       .replaceAll("<PlayerIpAddress>", player.getAddress().getHostName())
                       .replaceAll("<PlayerWorldName>", player.getWorld().getName())

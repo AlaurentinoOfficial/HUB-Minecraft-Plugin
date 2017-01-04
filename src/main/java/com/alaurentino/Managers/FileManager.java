@@ -8,10 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * Created by Anderson Laurentino on 04/01/2017.
@@ -66,12 +63,12 @@ public class FileManager {
         spawn = YamlConfiguration.loadConfiguration(sfile);
     }
 
-    public static FileConfiguration getConfig() {
-        return HUB.getInstace.getConfig();
-    }
-
-    public static FileConfiguration getLanguage() {
-        return language;
+    public static void saveSapwn() {
+        try {
+            spawn.save(sfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static boolean existSpawn() {
@@ -85,6 +82,7 @@ public class FileManager {
         spawn.set("spawn.yaw", location.getYaw());
         spawn.set("spawn.pitch", location.getPitch());
         spawn.set("spawn.world", location.getWorld().getName());
+        saveSapwn();
     }
 
     public static Location getSpawn(Player p) {
@@ -109,5 +107,30 @@ public class FileManager {
 
     public static FileConfiguration getIcon() {
         return icon;
+    }
+
+    public static void saveLanguage() {
+        try {
+            language.save(lfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static FileConfiguration getLanguage() {
+        return language;
+    }
+
+    public static void setLanguage(String path, Object value) {
+        getLanguage().set(path, value);
+        saveLanguage();
+    }
+
+    public static FileConfiguration getConfig() {
+        return HUB.getInstace.getConfig();
+    }
+
+    public static void saveConfig() {
+        HUB.getInstace.saveConfig();
     }
 }

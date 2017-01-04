@@ -1,5 +1,12 @@
 name: HUB
 version: 2.0-SNAPSHOT
 author: Alaurentino
-
 main: com.alaurentino.HUB
+
+commands:
+   gamemode:
+      description: Change gamemode.
+      usage: /<command>
+   gm:
+      description: Change gamemode.
+      usage: /<command>
