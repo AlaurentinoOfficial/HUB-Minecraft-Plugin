@@ -29,7 +29,7 @@ public class MessageManager {
 
     public static String getMessage(String message) {
         String lang = FileManager.getConfig().getString("default_language");
-        return FileManager.getLanguage().getString(lang + "." + message);
+        return filterMsg(FileManager.getLanguage().getString(lang + "." + message));
     }
 
     public static List<String> getMessageList(Player player, String message) {

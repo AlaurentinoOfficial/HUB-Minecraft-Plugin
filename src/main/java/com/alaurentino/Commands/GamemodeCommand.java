@@ -40,19 +40,22 @@ public class GamemodeCommand implements CommandExecutor {
             }
             else sender.sendMessage(MessageManager.getMessage("gamemode"));
         }
-        return false;
+        return true;
     }
 
     private void setGamemode(Player p, String arg) {
         switch (arg) {
             case "0":
                 p.setGameMode(GameMode.SURVIVAL);
+                p.sendMessage(MessageManager.getMessage(p, "setgamemode"));
                 break;
             case "1":
                 p.setGameMode(GameMode.CREATIVE);
+                p.sendMessage(MessageManager.getMessage(p, "setgamemode"));
                 break;
             case "2":
                 p.setGameMode(GameMode.ADVENTURE);
+                p.sendMessage(MessageManager.getMessage(p, "setgamemode"));
                 break;
             default:
                 p.sendMessage(MessageManager.getMessage(p, "gamemode"));

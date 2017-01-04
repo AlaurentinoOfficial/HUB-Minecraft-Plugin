@@ -63,7 +63,7 @@ public class FileManager {
         spawn = YamlConfiguration.loadConfiguration(sfile);
     }
 
-    public static void saveSapwn() {
+    public static void saveSpawn() {
         try {
             spawn.save(sfile);
         } catch (IOException e) {
@@ -82,7 +82,7 @@ public class FileManager {
         spawn.set("spawn.yaw", location.getYaw());
         spawn.set("spawn.pitch", location.getPitch());
         spawn.set("spawn.world", location.getWorld().getName());
-        saveSapwn();
+        saveSpawn();
     }
 
     public static Location getSpawn(Player p) {

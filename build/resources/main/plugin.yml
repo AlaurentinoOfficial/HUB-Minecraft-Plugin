@@ -10,3 +10,24 @@ commands:
    gm:
       description: Change gamemode.
       usage: /<command>
+   pvp:
+      description: Change pvp mode.
+      usage: /<command>
+   spawn:
+      description: Go to spawn.
+      usage: /<command>
+   hub:
+      description: Go to hub.
+      usage: /<command>
+   lobby:
+      description: Go to lobby.
+      usage: /<command>
+   setspawn:
+      description: Set spawn.
+      usage: /<command>
+   sethub:
+      description: Set hub.
+      usage: /<command>
+   setlobby:
+      description: Set lobby.
+      usage: /<command>
