@@ -4,30 +4,55 @@ author: Alaurentino
 main: com.alaurentino.HUB
 
 commands:
-   gamemode:
-      description: Change gamemode.
-      usage: /<command>
-   gm:
-      description: Change gamemode.
-      usage: /<command>
-   pvp:
-      description: Change pvp mode.
-      usage: /<command>
-   spawn:
-      description: Go to spawn.
-      usage: /<command>
-   hub:
-      description: Go to hub.
-      usage: /<command>
-   lobby:
-      description: Go to lobby.
-      usage: /<command>
-   setspawn:
-      description: Set spawn.
-      usage: /<command>
-   sethub:
-      description: Set hub.
-      usage: /<command>
-   setlobby:
-      description: Set lobby.
-      usage: /<command>
+  gamemode:
+    description: Change gamemode.
+    usage: /<command>
+  gm:
+    description: Change gamemode.
+    usage: /<command>
+  pvp:
+    description: Change pvp mode.
+    usage: /<command>
+  spawn:
+    description: Go to spawn.
+    usage: /<command>
+  hub:
+    description: Go to hub.
+    usage: /<command>
+  lobby:
+    description: Go to lobby.
+    usage: /<command>
+  setspawn:
+    description: Set spawn.
+    usage: /<command>
+  sethub:
+    description: Set hub.
+    usage: /<command>
+  setlobby:
+    description: Set lobby.
+    usage: /<command>
+  speed:
+    description: Set speed.
+    usage: /<command>
+  velocidade:
+    description: Set speed.
+    usage: /<command>
+
+Permissions:
+  HUB.gamemode:
+    description: Gives access to change your game mode
+  HUB.pvp:
+    description: Gives access to change pvp
+  HUB.spawn:
+    description: Gives access to spawn
+  HUB.setspawn:
+    description: Gives access to set spawn
+  HUB.speedstatus:
+      description: Gives access to see your speed
+  HUB.setspeed:
+      description: Gives access to set your speed
+  HUB.speed.admin:
+      description: Gives access to set your speed and other players
+      children:
+        HUB.speedstatus: true
+        HUB.setspeed: true

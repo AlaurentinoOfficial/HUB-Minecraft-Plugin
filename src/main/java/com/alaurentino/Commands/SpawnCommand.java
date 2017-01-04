@@ -24,7 +24,7 @@ public class SpawnCommand implements CommandExecutor {
                 else
                     ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "spawnNotPermission"));
             }
-            if(cmd.getName().equals("setspawn") || cmd.getName().equals("sethub") || cmd.getName().equals("setlobby")) {
+            else {
                 if(((Player) sender).getPlayer().hasPermission("HUB.setspawn")) {
                     FileManager.setSpawn(((Player) sender).getPlayer().getLocation());
                     FileManager.saveSpawn();

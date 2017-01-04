@@ -3,6 +3,7 @@ package com.alaurentino;
 import com.alaurentino.Commands.GamemodeCommand;
 import com.alaurentino.Commands.PvpCommand;
 import com.alaurentino.Commands.SpawnCommand;
+import com.alaurentino.Commands.SpeedCommand;
 import com.alaurentino.Managers.FileManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,6 +29,8 @@ public class HUB extends JavaPlugin {
         getCommand("setspawn").setExecutor(new SpawnCommand());
         getCommand("sethub").setExecutor(new SpawnCommand());
         getCommand("setlobby").setExecutor(new SpawnCommand());
+        getCommand("speed").setExecutor(new SpeedCommand());
+        getCommand("velocidade").setExecutor(new SpeedCommand());
     }
 
     @Override
