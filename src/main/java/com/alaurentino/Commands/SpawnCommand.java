@@ -16,19 +16,23 @@ public class SpawnCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(sender instanceof Player) {
             if(cmd.getName().equals("spawn") || cmd.getName().equals("hub") || cmd.getName().equals("lobby")) {
-                ((Player) sender).getPlayer().teleport(FileManager.getSpawn(((Player) sender).getPlayer()));
-                ((Player) sender).getPlayer().playSound(FileManager.getSpawn(((Player) sender).getPlayer()), Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
-                ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "spawn"));
+                if(sender.hasPermission("HUB.spawn")) {
+                    ((Player) sender).getPlayer().teleport(FileManager.getSpawn(((Player) sender).getPlayer()));
+                    ((Player) sender).getPlayer().playSound(FileManager.getSpawn(((Player) sender).getPlayer()), Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
+                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "spawn"));
+                }
+                else
+                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "spawnNotPermission"));
             }
-            else
-                ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "spawnNotPermission"));
             if(cmd.getName().equals("setspawn") || cmd.getName().equals("sethub") || cmd.getName().equals("setlobby")) {
-                FileManager.setSpawn(((Player) sender).getPlayer().getLocation());
-                FileManager.saveSpawn();
-                ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setspawn"));
+                if(((Player) sender).getPlayer().hasPermission("HUB.setspawn")) {
+                    FileManager.setSpawn(((Player) sender).getPlayer().getLocation());
+                    FileManager.saveSpawn();
+                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setspawn"));
+                }
+                else
+                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setSpawnNotPermission"));
             }
-            else
-                ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setSpawnNotPermission"));
         }
         else
             sender.sendMessage(MessageManager.getMessage("commandForPlayers"));
