@@ -24,7 +24,7 @@ public class LaunchpadEvent implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         if(e.getPlayer().hasPermission("HUB.launchpad")
-                && FileManager.getConfig().getStringList("enable_launchpad_world").contains(e.getTo().getWorld().getName())) {
+                && FileManager.getConfig().getBoolean("enable_launchpad")) {
             if(e.getTo().getBlock().getRelative(BlockFace.SELF).getType().equals(Material.STONE_PLATE)) {
                 e.getTo().getBlock().getWorld().playSound(e.getPlayer().getLocation(), Sound.BLOCK_STONE_PRESSUREPLATE_CLICK_OFF, 1.5f, 1f);
                 e.getTo().getBlock().getWorld().playEffect(e.getPlayer().getLocation(), Effect.MOBSPAWNER_FLAMES, 3);

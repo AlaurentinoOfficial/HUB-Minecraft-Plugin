@@ -26,7 +26,7 @@ header_msg: '&aCabecalho - &6Configure'
 # Title footer
 footer_msg: '&6Rodape - &aConfigure'
 
-#------------------------ [ Server MOTD ] ------------------------
+#------------------------ [ Server List MOTD ] ------------------------
 
 # Enable ServerMOTD
 MOTD_Enable: true
@@ -42,47 +42,36 @@ icon_enable: true
 # Set location img. <name>.png... Main is img on Server/plugins/hub/server-icon.png
 icon: 'plugins/HUB/server-icon.png'
 
-#------------------------ [ Language ] ------------------------
+#------------------------ [ HUB ] ------------------------
+
+# HUB World
+hub_world: 'world'
 
 #Default language
 default_language: 'pt_BR'
 
-#------------------------ [ Launchpad ] ------------------------
-
-enable_launchpad_world:
-  - 'world'
-
+# Enable lauchpad
+enable_launchpad: true
 LaunchPower: 1
 
-#------------------------ [ World ] ------------------------
-
-# Disable hunger
-disable_hunger_world:
-  - 'world'
+enable_double_jump: true
 
 # Disable rain
-disable_rain_world:
-  - 'world'
+disable_rain: true
 
-#Disable drop item
-disable_drop_item:
-  - 'world'
+# Disable hunger
+disable_hunger_world: true
 
-# Protection the damage caused by fall, explosion, pvp, fire and etc...
+# Disable drop item
+disable_drop_item: true
+
+# Protection the damage caused by fall, explosion, pvp, fire, ...
 protection:
-    pvp:
-      - "world"
-    fall:
-      - "world"
-    fire:
-      - "world"
-    lava:
-      - "world"
-    drowning:
-      - "world"
-    suffocation:
-      - "world"
-    explosion:
-      - "world"
-    wither:
-      - "world"
+    pvp: true
+    fall: true
+    fire: true
+    lava: true
+    drowning: true
+    suffocation: true
+    explosion: true
+    wither: true
