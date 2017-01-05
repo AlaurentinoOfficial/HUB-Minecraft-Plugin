@@ -39,7 +39,8 @@ class MessageFilter {
                       .replaceAll("<PlayerLocation>", String.valueOf(player.getLocation()))
                       .replaceAll("<PlayerSpeed>", String.valueOf(player.getWalkSpeed()*10))
                       .replaceAll("<PlayerHealth>", String.valueOf(player.getHealth()))
-                      .replaceAll("<PlayerFoodLevel>", String.valueOf(player.getFoodLevel()));
+                      .replaceAll("<PlayerFoodLevel>", String.valueOf(player.getFoodLevel()))
+                      .replaceAll("<PlayerLanguage>", FileManager.getLanguage().getString(player.getDisplayName()));
     }
 
     public static String colorFilter(String message) {

@@ -55,6 +55,12 @@ commands:
   regras:
     description: See the rules.
     usage: /<command>
+  language:
+    description: Set your language.
+    usage: /<command>
+  idioma:
+    description: Set your language.
+    usage: /<command>
 Permissions:
   HUB.gamemode:
     description: Gives access to change your game mode
@@ -64,6 +70,8 @@ Permissions:
     description: Gives access to see the rules
   HUB.launchpad:
       description: Gives access to use launchpad
+  HUB.language:
+        description: Gives access to change your language
   HUB.spawn:
     description: Gives access to spawn
   HUB.setspawn:

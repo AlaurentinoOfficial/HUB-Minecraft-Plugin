@@ -56,10 +56,6 @@ LaunchPower: 1
 
 #------------------------ [ World ] ------------------------
 
-# Game mode. EX: 0 = SURVIVAL; 1 = CREATIVE; 2 = ADVENTURE
-fix_gamemode:
-  - '0#world'
-
 # Disable hunger
 disable_hunger_world:
   - 'world'
