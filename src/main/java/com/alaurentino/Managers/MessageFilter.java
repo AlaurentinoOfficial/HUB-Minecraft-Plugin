@@ -1,15 +1,16 @@
 package com.alaurentino.Managers;
 
 import com.alaurentino.HUB;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Anderson Laurentino on 04/01/2017.
  */
-public class MessageFilter {
+class MessageFilter {
 
+    @NotNull
     public static String serverTagsFilter(String message) {
         return message.replaceAll("<Server>", HUB.getInstace.getServer().getName())
                       .replaceAll("<Version>", "1.11")
@@ -24,6 +25,7 @@ public class MessageFilter {
                       .replaceAll("<br>", "\n");
     }
 
+    @NotNull
     public static String playerTagsFilter(Player player, String message) {
         return message.replaceAll("<Player>", player.getDisplayName())
                       .replaceAll("<PlayerUUID>", String.valueOf(player.getUniqueId()))
@@ -40,6 +42,7 @@ public class MessageFilter {
                       .replaceAll("<PlayerLocation>", String.valueOf(player.getLocation()));
     }
 
+    @NotNull
     public static String colorFilter(String message) {
         return ChatColor.translateAlternateColorCodes('&', message);
     }

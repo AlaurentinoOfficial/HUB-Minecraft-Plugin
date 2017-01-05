@@ -16,7 +16,7 @@ pt_BR:
     join: '&9Entrou> &7<Player>'
     leave: '&9Saiu> &7<Player>'
     commandForPlayers: "&9Server> &7Este comando é para players!"
-    playerNotFound: '&9Server> Player não encontrado!'
+    playerNotFound: '&9Server> &7Player não encontrado!'
     playerDeath: "&9Server> &7Você morreu!"
     playerDeathGlobal: "&9Server> &7<Player> morreu!"
     setspawn: '&9Server> &7Você criou um spawn/lobby/hub!'

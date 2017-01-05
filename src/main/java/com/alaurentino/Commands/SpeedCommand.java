@@ -7,8 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.text.ParseException;
-
 /**
  * Created by Anderson Laurentino on 04/01/2017.
  */
@@ -27,13 +25,7 @@ public class SpeedCommand implements CommandExecutor {
                 } else if(args.length == 1) {
                     if(((Player) sender).getPlayer().hasPermission("HUB.setspeed")) {
                         try {
-                            Float speed = Float.parseFloat(args[0]);
-                            speed = speed > 10 ? 10 : speed;
-                            speed = speed < 0 ? 0 : speed;
-
-                            ((Player) sender).getPlayer().setFlySpeed(speed / 10);
-                            ((Player) sender).getPlayer().setWalkSpeed(speed / 10);
-                            ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setspeed").replaceAll("<Speed>", String.valueOf(speed)));
+                            setSpeed(((Player) sender).getPlayer(), args[0]);
                         }
                         catch (NumberFormatException e) {
                             sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
@@ -42,23 +34,13 @@ public class SpeedCommand implements CommandExecutor {
                     else
                         sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setspeedNotPermission"));
                 }
-                else if(args.length == 2 && !Bukkit.getPlayer(args[0]).equals(null)) {
-                    if(((Player) sender).getPlayer().hasPermission("HUB.speed.admin")) {
-                        try {
-                            Float speed = Float.parseFloat(args[1]);
-                            speed = speed > 10 ? 10 : speed;
-                            speed = speed < 0 ? 0 : speed;
-
-                            Bukkit.getPlayer(args[0]).setFlySpeed(speed / 10);
-                            Bukkit.getPlayer(args[0]).setWalkSpeed(speed / 10);
-                            Bukkit.getPlayer(args[0]).sendMessage(MessageManager.getMessage(Bukkit.getPlayer(args[0]), "setspeed").replaceAll("<Speed>", String.valueOf(speed)));
-                        }
-                        catch (NumberFormatException e) {
-                            sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
-                        }
+                else if(args.length == 2) {
+                    try {
+                        setSpeed(Bukkit.getPlayer(args[0]), args[0]);
                     }
-                    else
-                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setspeedNotPermission"));
+                    catch (NumberFormatException e) {
+                        ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
+                    }
                 }
                 else
                     sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
@@ -66,15 +48,9 @@ public class SpeedCommand implements CommandExecutor {
             else {
                 if(args.length == 1)
                     sender.sendMessage(MessageManager.getMessage("commandForPlayers"));
-                else if(args.length == 2 && !Bukkit.getPlayer(args[0]).equals(null)) {
+                else if(args.length == 2) {
                     try {
-                        Float speed = Float.parseFloat(args[1]);
-                        speed = speed > 10 ? 10 : speed;
-                        speed = speed < 0 ? 0 : speed;
-
-                        Bukkit.getPlayer(args[0]).setFlySpeed(speed / 10);
-                        Bukkit.getPlayer(args[0]).setWalkSpeed(speed / 10);
-                        Bukkit.getPlayer(args[0]).sendMessage(MessageManager.getMessage(Bukkit.getPlayer(args[0]), "setspeed").replaceAll("<Speed>", String.valueOf(speed)));
+                       setSpeed(Bukkit.getPlayer(args[0]), args[1]);
                     }
                     catch (NumberFormatException e) {
                         sender.sendMessage(MessageManager.getMessage("speed"));
@@ -85,8 +61,18 @@ public class SpeedCommand implements CommandExecutor {
             }
         }
         catch (NullPointerException e) {
-            sender.sendMessage(MessageManager.getMessage("speed"));
+            sender.sendMessage(MessageManager.getMessage("playerNotFound"));
         }
         return true;
+    }
+
+    private void setSpeed(Player player, String arg) {
+        Float speed = Float.parseFloat(arg);
+        speed = speed > 10 ? 10 : speed;
+        speed = speed < 0 ? 0 : speed;
+
+        player.getPlayer().setFlySpeed(speed / 10);
+        player.getPlayer().setWalkSpeed(speed / 10);
+        player.getPlayer().sendMessage(MessageManager.getMessage(player.getPlayer(), "setspeed").replaceAll("<Speed>", String.valueOf(speed)));
     }
 }

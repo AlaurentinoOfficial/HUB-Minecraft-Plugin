@@ -14,17 +14,14 @@ import java.io.*;
  * Created by Anderson Laurentino on 04/01/2017.
  */
 public class FileManager {
-
-    private FileConfiguration config;
     private static FileConfiguration language;
     private static FileConfiguration spawn;
-    private static FileConfiguration icon;
 
-    private static File lfile = new File(HUB.getInstace.getDataFolder(), "language.yml");
-    private static File sfile = new File(HUB.getInstace.getDataFolder(), "//spawn//spawn.yml");
+    private static File lfile = new File(HUB.getInstace.getDataFolder(), "//language.yml");
+    private static File sfile = new File(HUB.getInstace.getDataFolder(), "//spawn.yml");
     private static File ifile = new File(HUB.getInstace.getDataFolder(), "//server-icon.png");
 
-    public static void copy(InputStream in, File file)
+    private static void copy(InputStream in, File file)
     {
         try
         {
@@ -43,21 +40,17 @@ public class FileManager {
     }
 
     public static void setup() {
-        if (!lfile.exists()) {
-            lfile.getParentFile().mkdirs();
+        if (!lfile.exists())
             copy(HUB.getInstace.getResource("language.yml"), lfile);
-        }
-        if (!ifile.exists()) {
-            ifile.getParentFile().mkdirs();
+
+        if (!ifile.exists())
             copy(HUB.getInstace.getResource("server-icon.png"), ifile);
-        }
-        if (!sfile.exists()) {
-            sfile.getParentFile().mkdirs();
+
+        if (!sfile.exists())
             copy(HUB.getInstace.getResource("spawn.yml"), sfile);
-        }
-        if (!new File(HUB.getInstace.getDataFolder(), "config.yml").exists()) {
+
+        if (!new File(HUB.getInstace.getDataFolder(), "config.yml").exists())
             HUB.getInstace.saveDefaultConfig();
-        }
 
         language = YamlConfiguration.loadConfiguration(lfile);
         spawn = YamlConfiguration.loadConfiguration(sfile);
@@ -69,10 +62,6 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static boolean existSpawn() {
-        return spawn.contains("spawn");
     }
 
     public static void setSpawn(Location location) {
@@ -87,7 +76,7 @@ public class FileManager {
 
     public static Location getSpawn(Player p) {
         Location l;
-        if(existSpawn()) {
+        if(spawn.contains("spawn")) {
             double x = spawn.getDouble("spawn.x");
             double y = spawn.getDouble("spawn.y");
             double z = spawn.getDouble("spawn.z");
@@ -105,11 +94,7 @@ public class FileManager {
         return l;
     }
 
-    public static FileConfiguration getIcon() {
-        return icon;
-    }
-
-    public static void saveLanguage() {
+    private static void saveLanguage() {
         try {
             language.save(lfile);
         } catch (IOException e) {

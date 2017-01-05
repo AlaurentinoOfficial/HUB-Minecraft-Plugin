@@ -1,6 +1,7 @@
 package com.alaurentino.Managers;
 
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -8,7 +9,6 @@ import java.util.List;
  * Created by Anderson Laurentino on 04/01/2017.
  */
 public class MessageManager {
-
     public static String filterMsg(Player player, String message) {
         message = MessageFilter.serverTagsFilter(message);
         message = MessageFilter.playerTagsFilter(player, message);
