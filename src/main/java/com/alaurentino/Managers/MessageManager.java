@@ -35,4 +35,9 @@ public class MessageManager {
         String lang = FileManager.getLanguage().getString(player.getDisplayName());
         return FileManager.getLanguage().getStringList(lang + "." + message);
     }
+
+    public static List<String> getMessageList(String message) {
+        String lang = FileManager.getConfig().getString("default_language");
+        return FileManager.getLanguage().getStringList(lang + "." + message);
+    }
 }

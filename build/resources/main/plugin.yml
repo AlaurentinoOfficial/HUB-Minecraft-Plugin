@@ -49,12 +49,19 @@ commands:
   comida:
     description: Set your food level.
     usage: /<command>
-
+  rules:
+    description: See the rules.
+    usage: /<command>
+  regras:
+    description: See the rules.
+    usage: /<command>
 Permissions:
   HUB.gamemode:
     description: Gives access to change your game mode
   HUB.pvp:
     description: Gives access to change pvp
+  HUB.rules:
+    description: Gives access to see the rules
   HUB.spawn:
     description: Gives access to spawn
   HUB.setspawn:

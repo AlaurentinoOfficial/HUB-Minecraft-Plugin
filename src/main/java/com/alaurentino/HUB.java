@@ -32,5 +32,7 @@ public class HUB extends JavaPlugin {
         getCommand("vida").setExecutor(new HealthCommand());
         getCommand("food").setExecutor(new FoodCommand());
         getCommand("comida").setExecutor(new FoodCommand());
+        getCommand("rules").setExecutor(new RulesCommand());
+        getCommand("regras").setExecutor(new RulesCommand());
     }
 }
