@@ -43,6 +43,12 @@ commands:
   vida:
     description: Set your health.
     usage: /<command>
+  food:
+    description: Set your food level.
+    usage: /<command>
+  comida:
+    description: Set your food level.
+    usage: /<command>
 
 Permissions:
   HUB.gamemode:
@@ -68,6 +74,15 @@ Permissions:
       description: Gives access to set your health
   HUB.health.admin:
       description: Gives access to set your health and other players
+      children:
+        HUB.healthstatus: true
+        HUB.sethealth: true
+  HUB.foodstatus:
+      description: Gives access to see your food level
+  HUB.setfood:
+      description: Gives access to set your food level
+  HUB.food.admin:
+      description: Gives access to set your food level and other players
       children:
         HUB.healthstatus: true
         HUB.sethealth: true

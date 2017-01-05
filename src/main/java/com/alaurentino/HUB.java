@@ -30,5 +30,7 @@ public class HUB extends JavaPlugin {
         getCommand("velocidade").setExecutor(new SpeedCommand());
         getCommand("health").setExecutor(new HealthCommand());
         getCommand("vida").setExecutor(new HealthCommand());
+        getCommand("food").setExecutor(new FoodCommand());
+        getCommand("comida").setExecutor(new FoodCommand());
     }
 }
