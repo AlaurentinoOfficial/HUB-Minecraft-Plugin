@@ -31,7 +31,7 @@ public class PvpCommand implements CommandExecutor{
                 }
                 else ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "pvp"));
             }
-            else ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "pvpNotPermission"));
+            else ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
         }
         else {
             if(args.length == 2

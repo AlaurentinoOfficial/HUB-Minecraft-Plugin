@@ -7,7 +7,6 @@ import com.alaurentino.Managers.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 public class TitleAPI {
     public static void sendTitle(Player player, Integer fadeIn, Integer stay, Integer fadeOut, String message) {

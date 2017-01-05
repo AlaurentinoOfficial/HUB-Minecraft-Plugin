@@ -32,10 +32,16 @@ commands:
     description: Set lobby.
     usage: /<command>
   speed:
-    description: Set speed.
+    description: Set your speed.
     usage: /<command>
   velocidade:
-    description: Set speed.
+    description: Set your speed.
+    usage: /<command>
+  health:
+    description: Set your health.
+    usage: /<command>
+  vida:
+    description: Set your health.
     usage: /<command>
 
 Permissions:
@@ -56,3 +62,12 @@ Permissions:
       children:
         HUB.speedstatus: true
         HUB.setspeed: true
+  HUB.healthstatus:
+      description: Gives access to see your health
+  HUB.sethealth:
+      description: Gives access to set your health
+  HUB.health.admin:
+      description: Gives access to set your health and other players
+      children:
+        HUB.healthstatus: true
+        HUB.sethealth: true

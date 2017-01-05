@@ -10,54 +10,56 @@ import org.bukkit.entity.Player;
 /**
  * Created by Anderson Laurentino on 04/01/2017.
  */
-public class SpeedCommand implements CommandExecutor {
+public class HealthCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         try {
             if(sender instanceof Player) {
                 if(args.length == 0) {
-                    if(((Player) sender).getPlayer().hasPermission("HUB.speedstatus")) {
-                        Float speed = ((Player) sender).getPlayer().getWalkSpeed() * 10;
-                        ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speedStatus").replaceAll("<Speed>", String.valueOf(speed)));
-                    }
+                    if(((Player) sender).getPlayer().hasPermission("HUB.healthstatus"))
+                        ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "healthStatus"));
                     else
-                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speedStatusNotPermission"));
+                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
                 } else if(args.length == 1) {
-                    if(((Player) sender).getPlayer().hasPermission("HUB.setspeed")) {
+                    if(((Player) sender).getPlayer().hasPermission("HUB.sethealth")) {
                         try {
-                            setSpeed(((Player) sender).getPlayer(), args[0]);
+                            setHealth(((Player) sender).getPlayer(), args[0]);
                         }
                         catch (NumberFormatException e) {
-                            sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
+                            sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "health"));
                         }
                     }
                     else
-                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setspeedNotPermission"));
+                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
                 }
                 else if(args.length == 2) {
-                    try {
-                        setSpeed(Bukkit.getPlayer(args[0]), args[0]);
+                    if(((Player) sender).getPlayer().hasPermission("HUB.health.admin")) {
+                        try {
+                            setHealth(Bukkit.getPlayer(args[0]), args[1]);
+                        }
+                        catch (NumberFormatException e) {
+                            ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "health"));
+                        }
                     }
-                    catch (NumberFormatException e) {
-                        ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
-                    }
+                    else
+                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
                 }
                 else
-                    sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
+                    sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "health"));
             }
             else {
                 if(args.length == 1)
                     sender.sendMessage(MessageManager.getMessage("commandForPlayers"));
                 else if(args.length == 2) {
                     try {
-                       setSpeed(Bukkit.getPlayer(args[0]), args[1]);
+                       setHealth(Bukkit.getPlayer(args[0]), args[1]);
                     }
                     catch (NumberFormatException e) {
-                        sender.sendMessage(MessageManager.getMessage("speed"));
+                        sender.sendMessage(MessageManager.getMessage("health"));
                     }
                 }
                 else
-                    sender.sendMessage(MessageManager.getMessage("speed"));
+                    sender.sendMessage(MessageManager.getMessage("health"));
             }
         }
         catch (NullPointerException e) {
@@ -66,13 +68,12 @@ public class SpeedCommand implements CommandExecutor {
         return true;
     }
 
-    private void setSpeed(Player player, String arg) {
-        Float speed = Float.parseFloat(arg);
-        speed = speed > 10 ? 10 : speed;
-        speed = speed < 0 ? 0 : speed;
+    private void setHealth(Player player, String arg) {
+        double health = Float.parseFloat(arg);
+        health = health > 20 ? 20 : health;
+        health = health < 0 ? 0 : health;
 
-        player.getPlayer().setFlySpeed(speed / 10);
-        player.getPlayer().setWalkSpeed(speed / 10);
-        player.getPlayer().sendMessage(MessageManager.getMessage(player.getPlayer(), "setspeed").replaceAll("<Speed>", String.valueOf(speed)));
+        player.getPlayer().setHealth(health);
+        player.getPlayer().sendMessage(MessageManager.getMessage(player.getPlayer(), "setHealth"));
     }
 }

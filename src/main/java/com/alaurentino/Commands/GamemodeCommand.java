@@ -27,7 +27,7 @@ public class GamemodeCommand implements CommandExecutor {
                 }
                 else ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage((Player) ((Player) sender).getPlayer(), "gamemode"));
             }
-            else ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "gamemodeNotPermission"));
+            else ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
         }
         else {
             if(args.length == 1)
@@ -44,22 +44,19 @@ public class GamemodeCommand implements CommandExecutor {
     }
 
     private void setGamemode(Player p, String arg) {
-        switch (arg) {
-            case "0":
-                p.setGameMode(GameMode.SURVIVAL);
-                p.sendMessage(MessageManager.getMessage(p, "setgamemode"));
-                break;
-            case "1":
-                p.setGameMode(GameMode.CREATIVE);
-                p.sendMessage(MessageManager.getMessage(p, "setgamemode"));
-                break;
-            case "2":
-                p.setGameMode(GameMode.ADVENTURE);
-                p.sendMessage(MessageManager.getMessage(p, "setgamemode"));
-                break;
-            default:
-                p.sendMessage(MessageManager.getMessage(p, "gamemode"));
-                break;
+        if(arg.equals("0") || arg.toLowerCase().equals("survival")) {
+            p.setGameMode(GameMode.SURVIVAL);
+            p.sendMessage(MessageManager.getMessage(p, "setGamemode"));
         }
+        else if(arg.equals("1") || arg.toLowerCase().equals("creative")) {
+            p.setGameMode(GameMode.CREATIVE);
+            p.sendMessage(MessageManager.getMessage(p, "setGamemode"));
+        }
+        else if(arg.equals("2") || arg.toLowerCase().equals("adventure")) {
+            p.setGameMode(GameMode.ADVENTURE);
+            p.sendMessage(MessageManager.getMessage(p, "setGamemode"));
+        }
+        else
+            p.sendMessage(MessageManager.getMessage(p, "gamemode"));
     }
 }

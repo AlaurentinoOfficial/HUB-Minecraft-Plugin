@@ -3,14 +3,12 @@ package com.alaurentino.Managers;
 import com.alaurentino.HUB;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Anderson Laurentino on 04/01/2017.
  */
 class MessageFilter {
 
-    @NotNull
     public static String serverTagsFilter(String message) {
         return message.replaceAll("<Server>", HUB.getInstace.getServer().getName())
                       .replaceAll("<Version>", "1.11")
@@ -25,7 +23,6 @@ class MessageFilter {
                       .replaceAll("<br>", "\n");
     }
 
-    @NotNull
     public static String playerTagsFilter(Player player, String message) {
         return message.replaceAll("<Player>", player.getDisplayName())
                       .replaceAll("<PlayerUUID>", String.valueOf(player.getUniqueId()))
@@ -39,10 +36,11 @@ class MessageFilter {
                       .replaceAll("<PlayerVelocity>", String.valueOf(player.getVelocity()))
                       .replaceAll("<PlayerWalkSpeed>", String.valueOf(player.getWalkSpeed()))
                       .replaceAll("<PlayerFlySpeed>", String.valueOf(player.getFlySpeed()))
-                      .replaceAll("<PlayerLocation>", String.valueOf(player.getLocation()));
+                      .replaceAll("<PlayerLocation>", String.valueOf(player.getLocation()))
+                      .replaceAll("<PlayerSpeed>", String.valueOf(player.getWalkSpeed()*10))
+                      .replaceAll("<PlayerHealth>", String.valueOf(player.getHealth()));
     }
 
-    @NotNull
     public static String colorFilter(String message) {
         return ChatColor.translateAlternateColorCodes('&', message);
     }

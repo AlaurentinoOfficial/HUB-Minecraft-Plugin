@@ -18,10 +18,10 @@ public class SpeedCommand implements CommandExecutor {
                 if(args.length == 0) {
                     if(((Player) sender).getPlayer().hasPermission("HUB.speedstatus")) {
                         Float speed = ((Player) sender).getPlayer().getWalkSpeed() * 10;
-                        ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speedStatus").replaceAll("<Speed>", String.valueOf(speed)));
+                        ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speedStatus"));
                     }
                     else
-                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speedStatusNotPermission"));
+                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
                 } else if(args.length == 1) {
                     if(((Player) sender).getPlayer().hasPermission("HUB.setspeed")) {
                         try {
@@ -32,15 +32,19 @@ public class SpeedCommand implements CommandExecutor {
                         }
                     }
                     else
-                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setspeedNotPermission"));
+                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
                 }
                 else if(args.length == 2) {
-                    try {
-                        setSpeed(Bukkit.getPlayer(args[0]), args[0]);
+                    if(((Player) sender).getPlayer().hasPermission("HUB.speed.admin")) {
+                        try {
+                            setSpeed(Bukkit.getPlayer(args[0]), args[1]);
+                        }
+                        catch (NumberFormatException e) {
+                            ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
+                        }
                     }
-                    catch (NumberFormatException e) {
-                        ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
-                    }
+                    else
+                        sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
                 }
                 else
                     sender.sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "speed"));
@@ -73,6 +77,6 @@ public class SpeedCommand implements CommandExecutor {
 
         player.getPlayer().setFlySpeed(speed / 10);
         player.getPlayer().setWalkSpeed(speed / 10);
-        player.getPlayer().sendMessage(MessageManager.getMessage(player.getPlayer(), "setspeed").replaceAll("<Speed>", String.valueOf(speed)));
+        player.getPlayer().sendMessage(MessageManager.getMessage(player.getPlayer(), "setSpeed").replaceAll("<Speed>", String.valueOf(speed)));
     }
 }

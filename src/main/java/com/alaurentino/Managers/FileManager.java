@@ -17,9 +17,9 @@ public class FileManager {
     private static FileConfiguration language;
     private static FileConfiguration spawn;
 
-    private static File lfile = new File(HUB.getInstace.getDataFolder(), "//language.yml");
-    private static File sfile = new File(HUB.getInstace.getDataFolder(), "//spawn.yml");
-    private static File ifile = new File(HUB.getInstace.getDataFolder(), "//server-icon.png");
+    private static File lfile = new File(HUB.getInstace.getDataFolder(), "language.yml");
+    private static File sfile = new File(HUB.getInstace.getDataFolder(), "spawn.yml");
+    private static File ifile = new File(HUB.getInstace.getDataFolder(), "server-icon.png");
 
     private static void copy(InputStream in, File file)
     {
@@ -40,15 +40,18 @@ public class FileManager {
     }
 
     public static void setup() {
-        if (!lfile.exists())
+        if (!lfile.exists()) {
+            lfile.getParentFile().mkdirs();
             copy(HUB.getInstace.getResource("language.yml"), lfile);
-
-        if (!ifile.exists())
+        }
+        if (!ifile.exists()) {
+            ifile.getParentFile().mkdirs();
             copy(HUB.getInstace.getResource("server-icon.png"), ifile);
-
-        if (!sfile.exists())
+        }
+        if (!sfile.exists()) {
+            sfile.getParentFile().mkdirs();
             copy(HUB.getInstace.getResource("spawn.yml"), sfile);
-
+        }
         if (!new File(HUB.getInstace.getDataFolder(), "config.yml").exists())
             HUB.getInstace.saveDefaultConfig();
 

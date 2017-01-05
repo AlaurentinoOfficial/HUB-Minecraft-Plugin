@@ -22,16 +22,16 @@ public class SpawnCommand implements CommandExecutor {
                     ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "spawn"));
                 }
                 else
-                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "spawnNotPermission"));
+                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
             }
             else {
                 if(((Player) sender).getPlayer().hasPermission("HUB.setspawn")) {
                     FileManager.setSpawn(((Player) sender).getPlayer().getLocation());
                     FileManager.saveSpawn();
-                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setspawn"));
+                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setSpawn"));
                 }
                 else
-                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "setSpawnNotPermission"));
+                    ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "notPermission"));
             }
         }
         else
