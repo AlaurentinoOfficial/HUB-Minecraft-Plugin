@@ -2,6 +2,7 @@ package com.alaurentino.Commands;
 
 import com.alaurentino.Managers.FileManager;
 import com.alaurentino.Managers.MessageManager;
+import org.bukkit.Effect;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,6 +20,7 @@ public class SpawnCommand implements CommandExecutor {
                 if(sender.hasPermission("HUB.spawn")) {
                     ((Player) sender).getPlayer().teleport(FileManager.getSpawn(((Player) sender).getPlayer()));
                     ((Player) sender).getPlayer().playSound(FileManager.getSpawn(((Player) sender).getPlayer()), Sound.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
+                    ((Player) sender).getPlayer().playEffect(((Player) sender).getPlayer().getLocation(), Effect.ENDER_SIGNAL, 3);
                     ((Player) sender).getPlayer().sendMessage(MessageManager.getMessage(((Player) sender).getPlayer(), "spawn"));
                 }
                 else

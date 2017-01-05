@@ -62,6 +62,8 @@ Permissions:
     description: Gives access to change pvp
   HUB.rules:
     description: Gives access to see the rules
+  HUB.launchpad:
+      description: Gives access to use launchpad
   HUB.spawn:
     description: Gives access to spawn
   HUB.setspawn:

@@ -47,6 +47,13 @@ icon: 'plugins/HUB/server-icon.png'
 #Default language
 default_language: 'pt_BR'
 
+#------------------------ [ Launchpad ] ------------------------
+
+enable_launchpad_world:
+  - 'world'
+
+LaunchPower: 1
+
 #------------------------ [ World ] ------------------------
 
 # Game mode. EX: 0 = SURVIVAL; 1 = CREATIVE; 2 = ADVENTURE

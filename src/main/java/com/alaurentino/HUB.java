@@ -1,6 +1,8 @@
 package com.alaurentino;
 
 import com.alaurentino.Commands.*;
+import com.alaurentino.Events.EventListener;
+import com.alaurentino.Events.LaunchpadEvent;
 import com.alaurentino.Managers.FileManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,6 +19,8 @@ public class HUB extends JavaPlugin {
         FileManager.setup();
 
         getServer().getPluginManager().registerEvents(new EventListener(), this);
+        getServer().getPluginManager().registerEvents(new LaunchpadEvent(), this);
+
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("gm").setExecutor(new GamemodeCommand());
         getCommand("pvp").setExecutor(new PvpCommand());

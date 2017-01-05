@@ -1,4 +1,4 @@
-package com.alaurentino;
+package com.alaurentino.Events;
 
 import com.alaurentino.API.TitleAPI;
 import com.alaurentino.Managers.FileManager;
