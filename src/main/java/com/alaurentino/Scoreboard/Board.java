@@ -21,24 +21,39 @@ import java.util.Map;
 public class Board {
     private static Scoreboard board;
     private static Objective o;
+    private static List<String> lines;
 
     public static Map<Player, Integer> increments = new HashMap<>();
 
-    public static void setBoard(Player p) {
+    public static void setup() {
+        lines = FileManager.getBoard().getStringList("Scoreboard");
+        Collections.reverse(lines);
+
+        if(FileManager.getConfig().getBoolean("enable_scoreboard")) {
+            Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(HUB.getInstace,new Runnable() {
+                public void run() {
+                    for(Player p : Bukkit.getOnlinePlayers()) {
+                        if (p.getWorld().getName().equals(FileManager.getConfig().getString("hub_world"))) {
+                            Board.update(p);
+                        }
+                    }
+                }
+            }, 0L, FileManager.getConfig().getLong("scroll_time_scoreboard") * 20L);
+        }
+    }
+
+    public static void update(Player p) {
         board = Bukkit.getServer().getScoreboardManager().getNewScoreboard();
         o = board.registerNewObjective("test", "dummy");
         o.setDisplayName(FileManager.getConfig().getString(MessageManager.filterMsg(p, "scoreboard_title")));
         o.setDisplaySlot(DisplaySlot.SIDEBAR);
-        setup(p);
 
-        if(FileManager.getConfig().getBoolean("enable_scoreboard"))
-            p.setScoreboard(board);
+        scroll(p);
+
+        p.setScoreboard(board);
     }
 
-    private static void setup(Player p) {
-        List<String> lines = FileManager.getBoard().getStringList("Scoreboard");
-        Collections.reverse(lines);
-
+    private static void scroll(Player p) {
         if(!increments.containsKey(p))
             increments.put(p, 0);
 
@@ -55,17 +70,5 @@ public class Board {
             increments.remove(p);
         else
             increments.put(p, increments.get(p) + 1);
-    }
-
-    public static void update() {
-        if(FileManager.getConfig().getBoolean("enable_scoreboard")) {
-            Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(HUB.getInstace,new Runnable() {
-                public void run() {
-                    for(Player p : Bukkit.getOnlinePlayers())
-                        if(p.getWorld().getName().equals(FileManager.getConfig().getString("hub_world")))
-                            Board.setBoard(p);
-                }
-            }, 0L, FileManager.getConfig().getLong("scroll_time_scoreboard") * 20L);
-        }
     }
 }

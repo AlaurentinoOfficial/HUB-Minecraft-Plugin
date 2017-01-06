@@ -46,7 +46,12 @@ public class HUB extends JavaPlugin {
         getCommand("regras").setExecutor(new RulesCommand());
         getCommand("language").setExecutor(new LanguageCommand());
         getCommand("idioma").setExecutor(new LanguageCommand());
+        getCommand("tpa").setExecutor(new TeleportCommand());
+        getCommand("tpaccept").setExecutor(new TeleportCommand());
+        getCommand("tpaceitar").setExecutor(new TeleportCommand());
+        getCommand("tpdeny").setExecutor(new TeleportCommand());
+        getCommand("tpnegar").setExecutor(new TeleportCommand());
 
-        Board.update();
+        Board.setup();
     }
 }

@@ -61,6 +61,21 @@ commands:
   idioma:
     description: Set your language.
     usage: /<command>
+  tpa:
+    description: Teleport to another player.
+    usage: /<command>
+  tpaccept:
+    description: Accept teleport.
+    usage: /<command>
+  tpaceitar:
+    description: Accept teleport.
+    usage: /<command>
+  tpdeny:
+    description: Deny teleport.
+    usage: /<command>
+  tpnegar:
+    description: Deny teleport.
+    usage: /<command>
 Permissions:
   HUB.gamemode:
     description: Gives access to change your game mode
@@ -71,7 +86,9 @@ Permissions:
   HUB.launchpad:
       description: Gives access to use launchpad
   HUB.language:
-        description: Gives access to change your language
+      description: Gives access to change your language
+  HUB.tpa:
+      description: Gives access to teleport to players
   HUB.spawn:
     description: Gives access to spawn
   HUB.setspawn:
