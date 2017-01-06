@@ -26,6 +26,7 @@ public class HUB extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DoubleJumpEvent(), this);
         getServer().getPluginManager().registerEvents(new DropItemEvent(), this);
         getServer().getPluginManager().registerEvents(new ProtectionEvent(), this);
+        getServer().getPluginManager().registerEvents(new MobSpawnEvent(), this);
 
         getCommand("gamemode").setExecutor(new GamemodeCommand());
         getCommand("gm").setExecutor(new GamemodeCommand());

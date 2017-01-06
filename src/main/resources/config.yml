@@ -21,7 +21,7 @@ enable_double_jump: true
 disable_rain: true
 
 # Disable hunger
-disable_hunger_world: true
+disable_hunger: true
 
 # Disable drop item
 disable_drop_item: true
@@ -39,6 +39,7 @@ protection:
     suffocation: true
     explosion: true
     wither: true
+    spawn_mobs: true
 
 #------------------------ [ Title ] -----------------------
 # Enable title

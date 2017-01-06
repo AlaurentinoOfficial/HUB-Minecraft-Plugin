@@ -16,6 +16,6 @@ public class FoodLevelEvent implements Listener {
     public void onFoodLevelChange(FoodLevelChangeEvent e) {
         if(FileManager.getConfig().getString("hub_world").equals(e.getEntity().getWorld().getName())
                 && e.getEntityType() == EntityType.PLAYER)
-            e.setCancelled(FileManager.getConfig().getBoolean("hub_world"));
+            e.setCancelled(FileManager.getConfig().getBoolean("disable_hunger"));
     }
 }

@@ -45,7 +45,7 @@ public class Board {
     public static void update(Player p) {
         board = Bukkit.getServer().getScoreboardManager().getNewScoreboard();
         o = board.registerNewObjective("test", "dummy");
-        o.setDisplayName(FileManager.getConfig().getString(MessageManager.filterMsg(p, "scoreboard_title")));
+        o.setDisplayName(MessageManager.filterMsg(p, FileManager.getConfig().getString( "scoreboard_title")));
         o.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         scroll(p);
@@ -59,9 +59,15 @@ public class Board {
 
         int m = lines.size() - increments.get(p);
 
+        int spaces = 0;
         for(int i = (m-15); i < m; i++) {
             String line = lines.get(i);
-            line = line == null || line.isEmpty() ? "&a &7 " : line;
+
+            if(line.equals(" ") || line.isEmpty()) {
+                line = "&"+Integer.toHexString(spaces);
+                spaces++;
+            }
+
             Score s = o.getScore(Bukkit.getOfflinePlayer(MessageManager.filterMsg(p, line)));
             s.setScore(i);
         }
