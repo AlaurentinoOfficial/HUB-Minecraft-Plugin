@@ -16,15 +16,15 @@ import java.io.*;
 public class FileManager {
     private static FileConfiguration language;
     private static FileConfiguration spawn;
+    private static FileConfiguration board;
 
     private static File lfile = new File(HUB.getInstace.getDataFolder(), "language.yml");
     private static File sfile = new File(HUB.getInstace.getDataFolder(), "spawn.yml");
+    private static File bfile = new File(HUB.getInstace.getDataFolder(), "scoreboard.yml");
     private static File ifile = new File(HUB.getInstace.getDataFolder(), "server-icon.png");
 
-    private static void copy(InputStream in, File file)
-    {
-        try
-        {
+    private static void copy(InputStream in, File file) {
+        try {
             OutputStream out = new FileOutputStream(file);
             byte[] buf = new byte['?'];
             int len;
@@ -33,8 +33,7 @@ public class FileManager {
             out.close();
             in.close();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -52,11 +51,16 @@ public class FileManager {
             sfile.getParentFile().mkdirs();
             copy(HUB.getInstace.getResource("spawn.yml"), sfile);
         }
+        if (!bfile.exists()) {
+            bfile.getParentFile().mkdirs();
+            copy(HUB.getInstace.getResource("scoreboard.yml"), bfile);
+        }
         if (!new File(HUB.getInstace.getDataFolder(), "config.yml").exists())
             HUB.getInstace.saveDefaultConfig();
 
         language = YamlConfiguration.loadConfiguration(lfile);
         spawn = YamlConfiguration.loadConfiguration(sfile);
+        board = YamlConfiguration.loadConfiguration(bfile);
     }
 
     public static void saveSpawn() {
@@ -120,5 +124,17 @@ public class FileManager {
 
     public static void saveConfig() {
         HUB.getInstace.saveConfig();
+    }
+
+    public static FileConfiguration getBoard() {
+        return board;
+    }
+
+    private static void saveBoard() {
+        try {
+            board.save(bfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

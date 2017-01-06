@@ -3,6 +3,7 @@ package com.alaurentino;
 import com.alaurentino.Commands.*;
 import com.alaurentino.Events.*;
 import com.alaurentino.Managers.FileManager;
+import com.alaurentino.Scoreboard.Board;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -45,5 +46,7 @@ public class HUB extends JavaPlugin {
         getCommand("regras").setExecutor(new RulesCommand());
         getCommand("language").setExecutor(new LanguageCommand());
         getCommand("idioma").setExecutor(new LanguageCommand());
+
+        Board.update();
     }
 }

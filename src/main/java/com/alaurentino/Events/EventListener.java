@@ -3,6 +3,7 @@ package com.alaurentino.Events;
 import com.alaurentino.API.TitleAPI;
 import com.alaurentino.Managers.FileManager;
 import com.alaurentino.Managers.MessageManager;
+import com.alaurentino.Scoreboard.Board;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
@@ -53,6 +54,8 @@ public class EventListener implements Listener {
         String msg = MessageManager.getMessage(e.getPlayer(), "leave");
         msg = MessageManager.filterMsg(e.getPlayer(), msg);
         e.setQuitMessage(msg);
+
+        Board.increments.remove(e.getPlayer());
     }
 
     @EventHandler

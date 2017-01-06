@@ -9,7 +9,7 @@ title-enable: true
 # Tile
 title: '&6&lSeja bem-vindo!'
 # Sub-title
-sub_title: '&2<Player>&a, configure em config.yml'
+sub_title: '&2{Player}&a, configure em config.yml'
 
 # Time title. 20 = 1 second, 200 = 10 seconds...
 time: 100
@@ -32,7 +32,7 @@ footer_msg: '&6Rodape - &aConfigure'
 MOTD_Enable: true
 # Messge MOTD you server!!!
 server_motd:
-    one: '&3HUB Plus &6&k:&r &b&l---&8[&b OPEN BETA &8]&b--- &6&k:&r &3<Version>'
+    one: '&3HUB Plus &6&k:&r &b&l---&8[&b OPEN BETA &8]&b--- &6&k:&r &3{Version}'
     two: '&r&a&lAltere as configuracoes em &r&b&lConfig.yml'
 # Max player online in server
 MaxPlayers: 20
@@ -41,6 +41,17 @@ MaxPlayers: 20
 icon_enable: true
 # Set location img. <name>.png... Main is img on Server/plugins/hub/server-icon.png
 icon: 'plugins/HUB/server-icon.png'
+
+#------------------------ [ Scoreboard ] ------------------------
+
+# Enable scoreboard
+enable_scoreboard: true
+
+# Scoreboard title
+scoreboard_title: '&3Scoreboard'
+
+# Scroll time -> Seconds
+scroll_time_scoreboard: 2
 
 #------------------------ [ HUB ] ------------------------
 
