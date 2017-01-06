@@ -51,6 +51,8 @@ public class HUB extends JavaPlugin {
         getCommand("tpaceitar").setExecutor(new TeleportCommand());
         getCommand("tpdeny").setExecutor(new TeleportCommand());
         getCommand("tpnegar").setExecutor(new TeleportCommand());
+        getCommand("tell").setExecutor(new TellCommand());
+        getCommand("contar").setExecutor(new TellCommand());
 
         Board.setup();
     }

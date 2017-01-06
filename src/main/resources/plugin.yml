@@ -76,6 +76,12 @@ commands:
   tpnegar:
     description: Deny teleport.
     usage: /<command>
+  tell:
+    description: Whisper with other players.
+    usage: /<command>
+  contar:
+    description: Whisper with other players.
+    usage: /<command>
 Permissions:
   HUB.gamemode:
     description: Gives access to change your game mode
@@ -89,6 +95,8 @@ Permissions:
       description: Gives access to change your language
   HUB.tpa:
       description: Gives access to teleport to players
+  HUB.tell:
+      description: Gives access to whisper with other player
   HUB.spawn:
     description: Gives access to spawn
   HUB.setspawn:

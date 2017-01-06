@@ -1,6 +1,7 @@
 package com.alaurentino.Commands;
 
 import com.alaurentino.HUB;
+import com.alaurentino.Managers.FileManager;
 import com.alaurentino.Managers.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -55,21 +56,19 @@ public class TeleportCommand implements CommandExecutor {
                     requests.put(target, null);
                 }
             }
-        }, 10 * 20L);
+        }, FileManager.getConfig().getLong("requestion_expiration_time") * 20L);
     }
 
     private void response(Player source, Player target, boolean status) {
         if (source != null) {
-            if (status) {
-                requests.put(target, null);
+            requests.put(target, null);
 
+            if (status) {
                 source.sendMessage(MessageManager.getMessage(source, "tpaccept"));
                 target.sendMessage(MessageManager.getMessage(target, "tpaccept"));
 
                 source.teleport(target.getLocation());
             } else {
-                requests.put(target, null);
-
                 source.sendMessage(MessageManager.getMessage(source, "tpaccept"));
                 target.sendMessage(MessageManager.getMessage(target, "tpdeny"));
             }

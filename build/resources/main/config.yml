@@ -2,9 +2,47 @@
 # By: Alaurentino
 # Version: 2.0
 
+#------------------------ [ HUB ] ------------------------
+
+# HUB World
+hub_world: 'world'
+
+#Default language
+default_language: 'pt_BR'
+
+# Enable lauchpad
+enable_launchpad: true
+LaunchPower: 1
+
+# Enable double_jump
+enable_double_jump: true
+
+# Disable rain
+disable_rain: true
+
+# Disable hunger
+disable_hunger_world: true
+
+# Disable drop item
+disable_drop_item: true
+
+# TPA Request time
+tpa_request_time: 15
+
+# Protection the damage caused by fall, explosion, pvp, fire, ...
+protection:
+    pvp: true
+    fall: true
+    fire: true
+    lava: true
+    drowning: true
+    suffocation: true
+    explosion: true
+    wither: true
+
 #------------------------ [ Title ] -----------------------
 # Enable title
-title-enable: true
+title_enable: true
 
 # Tile
 title: '&6&lSeja bem-vindo!'
@@ -30,15 +68,18 @@ footer_msg: '&6Rodape - &aConfigure'
 
 # Enable ServerMOTD
 MOTD_Enable: true
+
 # Messge MOTD you server!!!
 server_motd:
     one: '&3HUB Plus &6&k:&r &b&l---&8[&b OPEN BETA &8]&b--- &6&k:&r &3{Version}'
     two: '&r&a&lAltere as configuracoes em &r&b&lConfig.yml'
+
 # Max player online in server
 MaxPlayers: 20
 
 # Enable icon img...
 icon_enable: true
+
 # Set location img. <name>.png... Main is img on Server/plugins/hub/server-icon.png
 icon: 'plugins/HUB/server-icon.png'
 
@@ -52,37 +93,3 @@ scoreboard_title: '&3Scoreboard'
 
 # Scroll time -> Seconds
 scroll_time_scoreboard: 2
-
-#------------------------ [ HUB ] ------------------------
-
-# HUB World
-hub_world: 'world'
-
-#Default language
-default_language: 'pt_BR'
-
-# Enable lauchpad
-enable_launchpad: true
-LaunchPower: 1
-
-enable_double_jump: true
-
-# Disable rain
-disable_rain: true
-
-# Disable hunger
-disable_hunger_world: true
-
-# Disable drop item
-disable_drop_item: true
-
-# Protection the damage caused by fall, explosion, pvp, fire, ...
-protection:
-    pvp: true
-    fall: true
-    fire: true
-    lava: true
-    drowning: true
-    suffocation: true
-    explosion: true
-    wither: true

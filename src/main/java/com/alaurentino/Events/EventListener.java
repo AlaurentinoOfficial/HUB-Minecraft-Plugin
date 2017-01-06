@@ -36,12 +36,13 @@ public class EventListener implements Listener {
 
         e.getPlayer().teleport(FileManager.getSpawn(e.getPlayer()));
 
-        TitleAPI.sendTitle(e.getPlayer(),
-                           FileManager.getConfig().getInt("fade_in"),
-                           FileManager.getConfig().getInt("fade_out"),
-                           FileManager.getConfig().getInt("time"),
-                           MessageManager.filterMsg(e.getPlayer(), FileManager.getConfig().getString("title")),
-                           MessageManager.filterMsg(e.getPlayer(), FileManager.getConfig().getString("sub_title")));
+        if(FileManager.getConfig().getBoolean("title_enable"))
+            TitleAPI.sendTitle(e.getPlayer(),
+                               FileManager.getConfig().getInt("fade_in"),
+                               FileManager.getConfig().getInt("fade_out"),
+                               FileManager.getConfig().getInt("time"),
+                               MessageManager.filterMsg(e.getPlayer(), FileManager.getConfig().getString("title")),
+                               MessageManager.filterMsg(e.getPlayer(), FileManager.getConfig().getString("sub_title")));
 
         for (String line : MessageManager.getMessageList(e.getPlayer(), "joinPlayer"))
             e.getPlayer().sendMessage(MessageManager.filterMsg(e.getPlayer(), line));
